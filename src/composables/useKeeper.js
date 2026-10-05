@@ -2,7 +2,7 @@ import { computed, reactive } from 'vue'
 import { createStorage } from '../services/storage'
 import { config, seed } from '../data'
 
-const storage = createStorage(config.storageKey, seed)
+const storage = createStorage(config.storageKey, seed, config.legacyStorageKeys)
 export function useKeeper() {
   const state = reactive(storage.read())
   const persist = () => storage.write(state)
